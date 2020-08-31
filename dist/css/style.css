@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+ 
   height: 100vh;
   /* background-color: #341f97; */
 }
@@ -25,7 +25,7 @@ body {
   display: flex;
   justify-content: center;
  align-items: flex-start;
-  width: 100vw;
+ 
   height: 100vh;
   /* background-color: #341f97; */
 }
