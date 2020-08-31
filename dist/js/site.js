@@ -2,7 +2,7 @@
 fetch('quiz.json')
     .then(response => response.json())
     .then(data => {
-        document.getElementById('questions').innerHTML = JSON.stringify(data);
+        document.getElementById('questions').innerHTML = JSON.parse(data);
     })
 
 let question_count = 0;
@@ -22,10 +22,29 @@ function next() {
     clearInterval(mytime);
     location.href = "end.html";
   }
+  
+  
   console.log(question_count);
-
+  let optionselect = document.querySelector("div.option.active");
+ 
+if( optionselect == null){
+Swal.fire({
+  title: 'Please select an option',
+  showClass: {
+    popup: 'animate__animated animate__fadeInDown'
+  },
+  hideClass: {
+    popup: 'animate__animated animate__fadeOutUp'
+  }
+})
+	//alert("please select an option");
+}	
+	 else{
+  	
+  
   let user_answer = document.querySelector("div.option.active").innerHTML;
   let crt_ans = questions[question_count].answers[questions[question_count].correct_answer-1]
+  
   // check if the answer is right or wrong
   if (user_answer == crt_ans) {
     points += 4;
@@ -40,6 +59,7 @@ function next() {
 
   question_count++;
   show(question_count);
+  }
 }
 
 function show(count) {
@@ -50,8 +70,8 @@ function show(count) {
   {
 	  options=options+`<div class="col-md-5 col-xs-12 option">${questions[count].answers[i]}</div>`;
   }
-  question.innerHTML=  `<h2>Q${count + 1}. ${questions[count].question}</h2>
-					  <div class="col-md-12 col-xs-12 option_group">
+  question.innerHTML=  `<h2 class="animate__animated animate__backInLeft">Q${count + 1}. ${questions[count].question}</h2>
+					  <div class="col-md-12 col-xs-12 option_group animate__animated animate__fadeInUp">
 					${options}
 					</div> 
   `;
