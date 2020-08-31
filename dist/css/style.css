@@ -18,24 +18,32 @@ body {
   align-items: center;
  
   height: 100vh;
-  /* background-color: #341f97; */
+
+}
+.wrapper2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  height: 100vh;
+
 }
 @media only screen and (max-width: 768px) {
-.wrapper {
+.wrapper2 {
   display: flex;
   justify-content: center;
  align-items: flex-start;
  
   height: 100vh;
-  /* background-color: #341f97; */
-}
-.mtst{
-		margin-top:50px;
-	}
+
 }
 
+}
 .welcome_text {
   width: 400px;
+}
+.welcome_text1 {
+  width: 315px;
 }
 
 .welcome_form {
