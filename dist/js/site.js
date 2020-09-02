@@ -8,11 +8,54 @@ fetch('quiz.json')
 let question_count = 0;
 let points = 0;
 
+let user_name = sessionStorage.getItem("name");
+
+
+document.querySelector("span.name").innerHTML = user_name;
+
+
+
 window.onload = function() {
   show(question_count);
 
 };
 
+
+function back(){
+	if (question_count == questions.length + 1) {
+    sessionStorage.setItem("time", time);
+    clearInterval(mytime);
+    location.href = "start.html";
+  }
+  let optionselect = document.querySelector("question_count");
+ 
+if( optionselect == null){
+	
+  question_count--;
+  show(question_count);
+  sessionStorage.getItem(question_count--);
+	//alert("please select an option");
+}	
+	 else{
+  let user_answer = document.querySelector("div.option.active").innerHTML;
+  let crt_ans = questions[question_count].answers[questions[question_count].correct_answer-1]
+  
+  // check if the answer is right or wrong
+  if (user_answer == crt_ans) {
+    points += 4;
+    sessionStorage.setItem("points", points);
+  }
+  else{
+	   points -= 1;
+    sessionStorage.setItem("points", points);
+  }
+  
+  console.log(points);
+
+  question_count--;
+  show(question_count);
+	 }
+}
 function next() {
 
    
@@ -76,6 +119,12 @@ function show(count) {
 					</div> 
   `;
   toggleActive();
+  if(question_count == 0){
+	$('#back').hide();	
+}
+else{
+	$('#back').show();	
+}
 }
 
 function toggleActive() {
